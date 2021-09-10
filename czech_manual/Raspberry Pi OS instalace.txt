@@ -1,0 +1,30 @@
+Požadavky pro instalaci:
+	Raspberry Pi 4 (min 2GB RAM) - doporučujeme použít chladič na procesor
+	MicroSD karta (min 4GB)
+	Napájecí zdroj (5V, min 2,4A)
+	Myš, klávesnice, monitor, HDMI kabel
+	Připojení k internetu
+	Počítač s Windows
+	Čtečka MicroSD karet
+
+Postup instalace systému na kartu:
+	Na počítači s Windows si stáhněte program "Rapberry Pi Imager" z odkazu:
+	https://downloads.raspberrypi.org/imager/imager_latest.exe
+	Na stažený soubor klikněte a nainstalujte program podle pokynů na obrazovce.
+	Po instalaci program spusťte a připojte k počítači čtečku MicroSD karet a vložte do ní připavenou kartu.
+	V programu pod nápisem "operating system" klikněte na tlačítko a zvolte operační systém, který chcete nainstalovat. 
+	Doporučujeme zvolit "Raspberry Pi OS (32-bit)".
+	Poté pod nápisem "storage" vyberte Vaší microSD kartu a potom klikňěte na "Write" a instalace operačního systému by měla začít. 
+	Tato akce bude trvat přibližně 10 minut (reálná rychlost bude záviset na rychlosti připojení k internetu a na rychlosti microSD karty).
+	Po dokončení akce můžete kartu z čtečky vyjmout.
+
+První spuštění Rapsberry Pi:
+	Vložte do Raspberry Pi nainstalovanou microSD kartu. Karta se vkládá do slotu na spodní straně desky.
+	Ještě před prvním spuštěním doporučujeme nainstalovat na procesor chladič. (není nezbytně nutné)
+	Připojte k Raspberry monitor, klávesnici a myš.
+	Před připojením napájecího zdroje se ujistěte, že se raspberry nedotýká ničeho kovového, co by mohlo způsobit zkrat. 
+	Poté můžete připojit napájecí zdroj. Jeho připojením by se mělo Raspberry začít spouštět. Po spuštění postupujte podle pokynů na obrazovce. 
+	Bude potřeba nastavit jazyk, zemi ve které se nacházíte a také se systém bude ptát na heslo. Toto políčko není nutné vyplňovat.
+	V posledním kroku se systém zeptá jestli chcete nainstalovat nejnovější aktualizace. Tento krok doporučujeme provést.
+	Aktualizace může trvat přibližně 10 minut. Po dokončení můžete systém restartovat. 
+	Tím by měla být instalace dokončena a je možno vložit do systému program pro vyčítání dat (návod v souboru manual.txt)

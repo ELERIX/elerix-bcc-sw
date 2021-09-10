@@ -1,0 +1,14 @@
+Windows:
+Do systému Windows presuňte soubory "BCC_reading.exe" a "config.txt" tak, aby byly ve stejné složce.
+Potom otevřete config soubor a nastavte do něj všechny potřebné parametry. 
+Do souboru je možné psát poznámky tak, že na začátek řádku napíšte znak "#" a za něj jakoukoliv poznámku.
+Nezapomeňte config soubor uložit a potom spusťte program kliknutím na BCC_reading.exe. 
+Program ve stejné složce vytvoří soubor log.txt do kterého bude zapisovat co se děje, nebo k jakým chybám došlo.
+
+Raspberry Pi OS:
+Přesuňte na plochu systému soubor "start_BCC.sh" a složku "BCC". 
+Klikněte pravým tlačítkem na soubor start_BCC.sh na ploše, vyberte vlastnosti, klikněte na "Práva" a nastavte "spustit" na hodnotu "kdokoliv" a potvrďte tlačítkem "Budiž".
+Stejný postup opakujte pro soubor BCC_reading ve složce BCC. Potom nastavte config soubor stejně, jako v systému Windows. 
+Program spouštějte pomocí skriptu na ploše. Po kliknutí na ikonu skriptu se objeví nabídka, ve které si můžete zvolit, jestli chcete aby program pracoval standartně 
+v konzoli, nebo na pozadí. V obou případech bude pracovat stejně, akorát v režimu na pozadí nebude možné číst žádný jeho výstup v reálném čase (pouze později ze souborů). 
+Volba "spusit" spustí program na pozadí a volba "Spustit v terminálu" (doporučeno) spustí program  terminálovém okně.
