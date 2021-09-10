@@ -1,0 +1,21 @@
+IP Here you have to set BCC IP adress that the program will try to connect to. You can set multiple adresses. They have to be split by ";" For example: 192.168.0.100;192.168.0.105;192.168.0.110
+PORT Here you can set port for every IP adress. If you want to use default port (80), you can leave this field empty.
+Period This integer value means how often (in seconds) will this software connect to BCC and read value from it. Minimum value is 1, maximum 3600 (one hour). Default value is 30.
+File_length This integer value means how often (in days) will this software stop writing to a file and create a new file. Minimum value is 1.
+Email_send_to Here you can set email adress that you want to send emails to. If you dont want to receive any emails, you can leave this field empty.
+Email_send_from This is email adress that you will receive emails from. If you dont want to receive any emails, you can leave this field empty.
+Email_sender_name Here you can set your custom email sender name. If you dont want to receive any emails, you can leave this field empty.
+Email_subject In this field you can set your custom email subject If you dont want to receive any emails, you can leave this field empty.
+Password Here you have to write you password to email if the SMTP server requires login before sending emails. If you leave this field empty, the program will try to send emails without any security protocols
+SMTP_IP This is IP of your SMTP server. You can use your own server or you can use something like "smtp.gmail.com". If you dont want to receive any emails, you can leave this field empty.
+SMTP_PORT This is port of you SMTP server. If you dont want to receive any emails, you can leave this field empty.
+ERROR_interval This value is in minutes (only integer). If there will be some kind of error or warning, you will receive email only once per x minutes that you set here.
+Udiff_warning If cells get disbalanced by this amount of milivolts, you will get notification email. (only integer)
+Umin_warning If cell voltage gets lower than this value, you will get notification email. (only integer)
+Umax_warning If cell voltage gets higher than this value, you will get notification email. (only integer)
+
+The program loads config file only once when it starts so if you want to change any value here and the program is working, 
+you can make any changes in the file, but you have to shut the program down and start it up again to apply the changes.
+
+You can use # at the beginning of any line to make comments. If any line starts with # the program not read it.
+For example if you dont want to receive any notification emails, you can put # on the beginning of every line that sets email (and SMTP) parameters.
