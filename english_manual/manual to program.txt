@@ -1,0 +1,14 @@
+Windows:
+Move files "BCC_reading.exe" and "config.txt" to windows computer. They have to be in same folder.
+Then open config file and set all parameters. You can find help in "config-help" file.
+Do not forget to save the file and start the program by clicking on BCC_reading.exe file.
+In the same folder, the program will start writing log.txt file and will write some informations in it.
+For example if it cant send email, it will write all informations that it tried to use when sending the email.
+
+Raspberry Pi OS:
+Move file "start_BCC.sh" and folder "BCC" to desktop.
+Right click on start_BCC.sh file on desktop, choose properties, click on "Rights" and set "start" to value "everyone" and confirm by clicking on "OK".
+Repeat the same process for file BCC_reading in folder BCC. Then set config file the same way as in Windows system. 
+Start the program by clicking on the script on the desktop. When you start the script, you can choose if you want the program to work in a console window or in backgroud.
+In both cases, the program will work the same way, but if you choose to run it in the background, you will not be able to read any values in real time.
+We recomend you to run the the program in console windows, because you will be able to see any warning messages that it may show you.
