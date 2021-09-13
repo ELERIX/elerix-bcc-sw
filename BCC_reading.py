@@ -33,8 +33,11 @@ def quit():
     keyboard.wait('Enter')
     exit(0)
 
-def error_message(value):
-    server = start_email()
+def error_message(value, onlywrite = 0):
+    if onlywrite == 0:
+        server = start_email()
+    else:
+        server = 0
     if server == 0:
         print("Sending emails is not available, check log file for more datails.")
         logmessage = "Sending emails is not available. Informations for sending emails are:\n                               Password: "
@@ -51,7 +54,8 @@ def error_message(value):
         if receiver_emails[0] == "None" or receiver_emails[0] == "":
             logmessage += "No receiver email adress is set in config file so it is impossible to send any email"
         else:
-            logmessage += receiver_emails
+            for i in range(0,len(receiver_emails)):
+                logmessage += receiver_emails[i] + " "
         logmessage += "\n                               SMTP_IP: "
         if SMTP_IP == "None" or SMTP_IP == "":
             logmessage += "SMTP IP is not set in config file so it is impossible to send any email"
@@ -70,12 +74,18 @@ def error_message(value):
     for i in range(len(receiver_emails)):
         send_to += receiver_emails[i] + ", "
     logwrite("Sending error email", 1)
-    mess = "Error on CPM board with IP: " + IP[all_files]
+    if value != 9:
+        mess = "Error on CPM board with IP: " + IP[all_files]
+    else:
+        mess = ""
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = send_to
-    message["Subject"] = subj + " ERROR " + es_date
-    if value != 5:
+    if value != 9:
+        message["Subject"] = subj + " ERROR " + es_date
+    else:
+        message["Subject"] = subj + " HELLO " + es_date
+    if value != 5 and value != 9:
         f_name = csv_files[all_files].name
         csv_files[all_files].close()
         csv_files[all_files] = open(f_name,"rb")
@@ -105,12 +115,19 @@ def error_message(value):
         mess += ".\nCell voltage reached Umin. Actual voltage is: " + str(one_line_values[21]) + "V on position " + str(one_line_values[23]) + "V\nYour minimum voltage in config file is: " + Umin_warning + "\nVoltage set on CPM board is: " + str(one_line_values[17])
     elif value == 8:
         mess += ".\nCell voltage reached Umax. Actual voltage is: " + str(one_line_values[22]) + "V on position " + str(one_line_values[24]) + "V\nYour maximum voltage in config file is: " + Umax_warning + "\nVoltage set on CPM board is: " + str(one_line_values[18])
+    elif value == 9:
+        mess += "Program for reading values from BCC is starting up"
     message.attach(MIMEText(mess, "plain"))
-    if value != 5:
+    if value != 5 and value != 9:
         message.attach(part)
     mess = message.as_string()
-    return_code = server.sendmail(sender_email, receiver_emails, mess)
-    if value != 5:
+    try:
+        return_code = server.sendmail(sender_email, receiver_emails, mess)
+    except:
+        print("An error occured when trying to send email, check your login informations in config file and restart the program")
+        error_message(0, 1)
+        return
+    if value != 5 and value != 9:
         csv_files[all_files].close()
         csv_files[all_files] = open(f_name, "a")
 def start_email():
@@ -194,7 +211,6 @@ Umin_warning = "None"
 csv_files = []
 port = []
 send_emails = True
-edited_mail = False
 login = False
 for line in lines:
     if line[0] == "#":
@@ -297,15 +313,14 @@ if receiver_emails[0] == "None":
     logwrite("Receiver email adress is not properly written in config file, no email will be sent", 1)
     send_emails = False
 if (sender_email == "None" or sender_email == "\n" or ("@" not in sender_email or "." not in sender_email)) and send_emails == True:
-    sender_email = "BCC <bcc@gwl.eu>"
-    print("No sender email found in config file, using default adress for sending emails")
-    logwrite("No sender email found in config file, using default adress for sending emails", 0)
+    print("No sender email found in config file, sending emails is not available")
+    logwrite("No sender email found in config file, sending emails in not available", 1)
+    send_emails = False
 elif (password == "None" or password == "\n") and sender_email == True:
-    print("Password to sender email adress is not defined in config file.\nNo email will be sent")
-    logwrite("Password to sender email adress is not defined in config file. No email will be sent")
+    print("Password to sender email adress is not defined in config file.Program will try to send emails without login command")
+    logwrite("Password to sender email adress is not defined in config file. Program will try to send emails without login command")
     login = False
-else:
-    edited_mail = True
+
 if Udiff_level == "None" or Udiff_level == "\n" or Udiff_level == "0\n":
     print("No emails about Udiff will be sent")
     logwrite("No emails about Udiff will be sent", 1)
@@ -376,6 +391,7 @@ for i in range(0, len(csv_files)):
     print(URL[i])
 for i in range(0, 34):
     one_line_values.append(0)
+error_message(9)
 temporary_short = 0
 lines_written = 0
 file_date = str(datetime.datetime.now())
