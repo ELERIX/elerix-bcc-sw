@@ -1,0 +1,16 @@
+IP 192.168.0.100;192.168.0.101
+#IP home.meichi.cz
+PORT 80
+Period 5
+File_length 2
+Email_send_to xecajo2956@mnqlm.com
+Email_send_from bcc@gwl.eu
+Email_sender_name BCC
+Email_subject BCC GWL
+#Password
+SMTP_IP 192.168.5.26
+SMTP_PORT 25
+ERROR_interval 10
+Udiff_warning 100
+Umin_warning 2900
+Umax_warning 3600
