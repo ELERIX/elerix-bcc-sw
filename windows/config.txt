@@ -1,14 +1,14 @@
-IP 192.168.2.211
+IP 192.168.0.100;192.168.0.101
 PORT 80
 Period 5
 File_length 1
 Email_send_to
-Email_send_from 
+Email_send_from
 Email_sender_name BCC
 Email_subject BCC GWL
-#Password
-SMTP_IP 192.168.5.26
-SMTP_PORT 25
+Password
+SMTP_IP
+SMTP_PORT
 ERROR_interval 10
 Udiff_warning 100
 Umin_warning 2900
